@@ -7,7 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 public class Main {
     public static void main(String[] args) {
 
-        searchItem();
+           changeQuantityCart();
 
 
 
@@ -36,7 +36,7 @@ public class Main {
     }
 
     public static void searchItemAndSort(){
-        System.setProperty("webdriver.chrome.driver","resources2/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","resources1/chromedriver.exe");
 
         WebDriver driver = new ChromeDriver();
 
@@ -52,7 +52,7 @@ public class Main {
     }
 
     public static void searchUsingMenu(){
-        System.setProperty("webdriver.chrome.driver","resources2/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","resources1/chromedriver.exe");
 
         WebDriver driver = new ChromeDriver();
         Actions action = new Actions(driver);
@@ -77,4 +77,74 @@ public class Main {
 
 
     }
+
+
+    public  static void addProductCart(){
+        System.setProperty("webdriver.chrome.driver","resources/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        Actions action = new Actions(driver);
+
+        driver.get("https://fasttrackit.org/selenium-test/");
+        driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.std > div.widget.widget-new-products > div.widget-products > ul > li:nth-child(3) > div > h3 > a")).click();
+        driver.findElement(By.xpath("//*[@id=\"swatch27\"]/span[1]/img")).click();
+        driver.findElement(By.xpath("//*[@id=\"swatch74\"]/span[1]")).click();
+
+
+        driver.findElement(By.xpath("//*[@id=\"product_addtocart_form\"]/div[3]/div[6]/div[2]/div[2]/button/span/span")).click();
+
+
+        driver.close();
+
+
+
+
+
+
+
+    }
+
+    public static void removeProductCart(){
+        System.setProperty("webdriver.chrome.driver","resources/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        Actions action = new Actions(driver);
+
+        driver.get("https://fasttrackit.org/selenium-test/");
+        driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.std > div.widget.widget-new-products > div.widget-products > ul > li:nth-child(3) > div > h3 > a")).click();
+        driver.findElement(By.xpath("//*[@id=\"swatch27\"]/span[1]/img")).click();
+        driver.findElement(By.xpath("//*[@id=\"swatch74\"]/span[1]")).click();
+
+
+        driver.findElement(By.xpath("//*[@id=\"product_addtocart_form\"]/div[3]/div[6]/div[2]/div[2]/button/span/span")).click();
+        driver.findElement(By.xpath("//*[@id=\"shopping-cart-table\"]/tbody/tr[1]/td[6]/a")).click();
+        sleep(10000);
+
+
+        driver.close();
+
+    }
+
+    public static void changeQuantityCart(){
+        System.setProperty("webdriver.chrome.driver","resources/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        Actions action = new Actions(driver);
+
+        driver.get("https://fasttrackit.org/selenium-test/");
+        driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.std > div.widget.widget-new-products > div.widget-products > ul > li:nth-child(3) > div > h3 > a")).click();
+        driver.findElement(By.xpath("//*[@id=\"swatch27\"]/span[1]/img")).click();
+        driver.findElement(By.xpath("//*[@id=\"swatch74\"]/span[1]")).click();
+
+
+        driver.findElement(By.xpath("//*[@id=\"product_addtocart_form\"]/div[3]/div[6]/div[2]/div[2]/button/span/span")).click();
+        driver.findElement(By.xpath("//*[@id=\"shopping-cart-table\"]/tbody/tr[1]/td[4]/input")).clear();
+        driver.findElement(By.xpath("//*[@id=\"shopping-cart-table\"]/tbody/tr[1]/td[4]/input")).sendKeys("2");
+        driver.findElement(By.xpath("//*[@id=\"shopping-cart-table\"]/tbody/tr[1]/td[4]/button/span/span")).click();
+
+
+
+        driver.close();
+    }
+
+
+
+
 }
