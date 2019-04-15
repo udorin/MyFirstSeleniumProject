@@ -7,7 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 public class Main {
     public static void main(String[] args) {
 
-           changeQuantityCart();
+
 
 
 
@@ -143,6 +143,55 @@ public class Main {
 
         driver.close();
     }
+
+    public static void tryLoginI(){
+        //try login with invalid username and password
+
+        System.setProperty("webdriver.chrome.driver","resources/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+
+
+        driver.get("https://fasttrackit.org/selenium-test/");
+        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
+        driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a")).click();
+        driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("test@exemple.com");
+        driver.findElement(By.xpath("//*[@id=\"pass\"]")).sendKeys("test");
+        driver.findElement(By.xpath("//*[@id=\"send2\"]/span/span")).click();
+        driver.close();
+
+
+
+
+
+    }
+
+    public static void createAccount(){
+        //try create account
+        System.setProperty("webdriver.chrome.driver","resources/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+
+
+        driver.get("https://fasttrackit.org/selenium-test/");
+        driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label")).click();
+        driver.findElement(By.cssSelector("#header-account > div > ul > li:nth-child(5) > a")).click();
+
+        driver.findElement(By.xpath("//*[@id=\"firstname\"]")).sendKeys("John");
+        driver.findElement(By.xpath("//*[@id=\"middlename\"]")).sendKeys("Andrew");
+        driver.findElement(By.xpath("//*[@id=\"lastname\"]")).sendKeys("Andrew");
+        driver.findElement(By.xpath("//*[@id=\"email_address\"]")).sendKeys("test@gmail.com");
+        driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("test12345");
+        driver.findElement(By.xpath("//*[@id=\"confirmation\"]")).sendKeys("test12345");
+
+
+
+
+        driver.findElement(By.xpath("//*[@id=\"form-validate\"]/div[2]/button/span/span")).click();
+        driver.close();
+    }
+
+
+
+
 
 
 
